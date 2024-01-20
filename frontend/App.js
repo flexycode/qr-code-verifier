@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View, Button } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, SafeAreaView } from 'react-native';
+import {Stack, useRouter} from "expo-router"
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Camera } from 'expo-camera';
 
 export default function App() {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     (async () => {
@@ -22,8 +25,11 @@ export default function App() {
   const renderCamera = () => {
     return (
       <View style={styles.cameraContainer}>
-        <BarCodeScanner
+        <Camera
+          barCodeScannerSettings={{barCodeTypes: [BarCodeScanner.Constants.BarCodeType.qr]}}
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+          ratio='1:1'
+
           style={styles.camera}
         />
       </View>
@@ -43,31 +49,34 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Welcome to the Barcode Scanner App!</Text>
-      <Text style={styles.paragraph}>Scan a barcode to start your job.</Text>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Sante Qr verification</Text>
       {renderCamera()}
+      <Text style={styles.paragraph}>Align your camera to the Qr Code to start scanning</Text>
       <TouchableOpacity
         style={styles.button}
         onPress={() => setScanned(false)}
         disabled={scanned}
       >
-        <Text style={styles.buttonText}>Scan QR to Start your job</Text>
+        <Text style={styles.buttonText}>Scan QR</Text>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "#e5fae3",
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
   },
   title: {
+    position: "relative",
+    top: "100px",
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 100,
+    marginTop: 80
   },
   paragraph: {
     fontSize: 16,
@@ -75,23 +84,28 @@ const styles = StyleSheet.create({
   },
   cameraContainer: {
     width: '80%',
-    aspectRatio: 1,
+    aspectRatio: 1/1,
     overflow: 'hidden',
-    borderRadius: 10,
+    borderRadius: 40,
     marginBottom: 40,
   },
   camera: {
     flex: 1,
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: 'green',
     paddingHorizontal: 20,
     paddingVertical: 10,
-    borderRadius: 5,
+    borderRadius: 30,
+    height:50,
+    width: 150,
+    alignContent: "center",
+    justifyContent: "center"
   },
   buttonText: {
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
+    textAlign: "center"
   },
 });
