@@ -56,7 +56,6 @@ export default function App() {
       <TouchableOpacity
         style={styles.button}
         onPress={() => setScanned(false)}
-        disabled={scanned}
       >
         <Text style={styles.buttonText}>Scan QR</Text>
       </TouchableOpacity>
