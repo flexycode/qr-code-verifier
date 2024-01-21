@@ -79,6 +79,16 @@ const styles = StyleSheet.create({
     alignContent: "center",
     justifyContent: "center",
   },
+  verifiedImage: {
+    width: "80%",
+    height: undefined,
+    aspectRatio: 1 / 1,
+    resizeMode: "cover",
+    position: "relative",
+    top: 0,
+    alignSelf: "center",
+  },
+  userInfoContainer: {},
 });
 
 export default styles;
