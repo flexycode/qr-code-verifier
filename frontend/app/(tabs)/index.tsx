@@ -1,4 +1,4 @@
-import styles from "@/constants/constants";
+import { styles } from "@/constants/constants";
 
 import React, { useState, useEffect } from "react";
 import { Text, TouchableOpacity, View, SafeAreaView } from "react-native";
