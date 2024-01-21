@@ -25,21 +25,6 @@ export default function Home() {
     router.navigate(require("@/app/(tabs)/verifiedPage"));
   };
 
-  const renderCamera = () => {
-    return (
-      <View style={styles.cameraContainer}>
-        <Camera
-          barCodeScannerSettings={{
-            barCodeTypes: [BarCodeScanner.Constants.BarCodeType.qr],
-          }}
-          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-          ratio="1:1"
-          style={styles.camera}
-        />
-      </View>
-    );
-  };
-
   if (hasPermission === null) {
     return <View />;
   }
@@ -54,15 +39,18 @@ export default function Home() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Stack.Screen
-        options={{
-          title: "Sante Qr Verification",
-          headerStyle: { backgroundColor: "#e5fae3" },
-          headerTitleAlign: "center",
-          headerShadowVisible: false,
-        }}
-      ></Stack.Screen>
-      {renderCamera()}
+      <Stack.Screen options={{ headerShown: false }}></Stack.Screen>
+      <Text style={styles.title}>Sante Qr verification</Text>
+      <View style={styles.cameraContainer}>
+        <Camera
+          barCodeScannerSettings={{
+            barCodeTypes: [BarCodeScanner.Constants.BarCodeType.qr],
+          }}
+          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+          ratio="1:1"
+          style={styles.camera}
+        />
+      </View>
       <Text style={styles.paragraph}>
         Align your camera to the Qr Code to start scanning
       </Text>

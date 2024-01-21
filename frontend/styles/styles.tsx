@@ -23,14 +23,14 @@ const styles = StyleSheet.create({
   },
   paragraph: {
     fontSize: 16,
-    marginBottom: 40,
+    marginBottom: 50,
   },
   cameraContainer: {
     width: "80%",
     aspectRatio: 1 / 1,
     overflow: "hidden",
     borderRadius: 40,
-    marginBottom: 40,
+    marginBottom: 50,
   },
   camera: {
     flex: 1,
