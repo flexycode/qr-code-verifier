@@ -1,13 +1,70 @@
-import { StyleSheet, View, Text } from "react-native";
-import { Stack } from "expo-router";
-
 import styles from "@/constants/constants";
 
-export default function TabOneScreen() {
+import React, { useState, useEffect } from "react";
+import { Text, TouchableOpacity, View, SafeAreaView } from "react-native";
+import { Link, Stack, useRouter } from "expo-router";
+import { BarCodeScanner, BarCodeScannerResult } from "expo-barcode-scanner";
+import { Camera } from "expo-camera";
+
+export default function Home() {
+  const [hasPermission, setHasPermission] = useState(false);
+  const [scanned, setScanned] = useState(false);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await BarCodeScanner.requestPermissionsAsync();
+      setHasPermission(status === "granted");
+    })();
+  }, []);
+
+  const handleBarCodeScanned = ({ type, data }: BarCodeScannerResult) => {
+    setScanned(true);
+    alert("" + type + " " + data);
+  };
+
+  const renderCamera = () => {
+    return (
+      <View style={styles.cameraContainer}>
+        <Camera
+          barCodeScannerSettings={{
+            barCodeTypes: [BarCodeScanner.Constants.BarCodeType.qr],
+          }}
+          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+          ratio="1:1"
+          style={styles.camera}
+        />
+      </View>
+    );
+  };
+
+  if (hasPermission === null) {
+    return <View />;
+  }
+
+  if (hasPermission === false) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.paragraph}>Camera permission not granted</Text>
+      </View>
+    );
+  }
+
   return (
-    <View>
-      <Stack.Screen options={{ headerTitle: "" }}></Stack.Screen>
-      <Text style={styles.title}>Tab One</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Stack.Screen></Stack.Screen>
+      <Text style={styles.title}>Sante Qr verification</Text>
+      {renderCamera()}
+      <Text style={styles.paragraph}>
+        Align your camera to the Qr Code to start scanning
+      </Text>
+      <TouchableOpacity style={styles.button} onPress={() => setScanned(false)}>
+        <Text style={styles.buttonText}>Scan QR</Text>
+      </TouchableOpacity>
+      <View>
+        <Link href={require("@/app/(tabs)/verifiedPage")}>verify</Link>
+      </View>
+    </SafeAreaView>
   );
 }
