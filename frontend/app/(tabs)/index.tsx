@@ -2,6 +2,7 @@ import { styles } from "@/constants/constants";
 
 import React, { useState, useEffect } from "react";
 import { Text, TouchableOpacity, View, SafeAreaView } from "react-native";
+import { useIsFocused } from "@react-navigation/native";
 import { Link, Stack, useRouter } from "expo-router";
 import { BarCodeScanner, BarCodeScannerResult } from "expo-barcode-scanner";
 import { Camera } from "expo-camera";
@@ -10,6 +11,7 @@ export default function Home() {
   const [hasPermission, setHasPermission] = useState(false);
   const [scanned, setScanned] = useState(false);
 
+  const isFocused = useIsFocused();
   const router = useRouter();
 
   useEffect(() => {
@@ -36,20 +38,24 @@ export default function Home() {
     );
   }
 
+  function renderCamera() {
+    return (
+      <Camera
+        barCodeScannerSettings={{
+          barCodeTypes: [BarCodeScanner.Constants.BarCodeType.qr],
+        }}
+        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+        ratio="1:1"
+        style={styles.camera}
+      />
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Stack.Screen options={{ headerShown: false }}></Stack.Screen>
       <Text style={styles.title}>Sante Qr verification</Text>
-      <View style={styles.cameraContainer}>
-        <Camera
-          barCodeScannerSettings={{
-            barCodeTypes: [BarCodeScanner.Constants.BarCodeType.qr],
-          }}
-          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-          ratio="1:1"
-          style={styles.camera}
-        />
-      </View>
+      <View style={styles.cameraContainer}>{isFocused && renderCamera()}</View>
       <Text style={[styles.paragraph, { marginBottom: 50 }]}>
         Align your camera to the Qr Code to start scanning
       </Text>
@@ -61,9 +67,6 @@ export default function Home() {
       >
         <Text style={styles.buttonText}>Scan QR</Text>
       </TouchableOpacity>
-      <View>
-        <Link href="/(tabs)/verifiedPage">verify</Link>
-      </View>
     </SafeAreaView>
   );
 }
