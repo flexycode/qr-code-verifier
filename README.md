@@ -113,6 +113,11 @@ Contributions are welcome! If you have ideas for improvements, follow these step
 
 If you encounter any issues or have suggestions, please open an issue to let us know.
 
+### Update
+
+Kindly redirect here at https://github.com/flexycode/qr-code-verifier-rn
+for the mobile version app
+
 ### License
 
 This project is licensed under the MIT License.
