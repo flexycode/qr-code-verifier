@@ -40,18 +40,22 @@ export default function verifiedPage() {
         </View>
 
         <View style={styles.userInfoContainer}>
-          <Text>Name</Text>
-          <Text>actual name</Text>
-          <Text>Name</Text>
-          <Text>actual name</Text>
-          <Text>Name</Text>
-          <Text>actual name</Text>
-          <Text>Name</Text>
-          <Text>actual name</Text>
-          <Text>Name</Text>
-          <Text>actual name</Text>
-          <Text>Name</Text>
-          <Text>actual name</Text>
+          <Text style={styles.header}>Name</Text>
+          <Text style={[styles.paragraph, { marginBottom: 10 }]}>
+            Juan Dela Cruz
+          </Text>
+          <Text style={styles.header}>ID</Text>
+          <Text style={[styles.paragraph, { marginBottom: 10 }]}>
+            000-0000-0000-000
+          </Text>
+          <Text style={styles.header}>Address</Text>
+          <Text style={[styles.paragraph, { marginBottom: 10 }]}>
+            320 Teddy Ranch, East Oswaldostad, MD 106520
+          </Text>
+          <Text style={styles.header}>Email</Text>
+          <Text style={[styles.paragraph, { marginBottom: 10 }]}>
+            juandelacruz@example.com
+          </Text>
         </View>
       </ScrollView>
     </SafeAreaView>

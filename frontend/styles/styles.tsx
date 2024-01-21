@@ -11,8 +11,7 @@ const styles = StyleSheet.create({
     position: "relative",
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 100,
-    marginTop: 80,
+    paddingBottom: 5,
   },
   title: {
     position: "relative",
@@ -22,8 +21,7 @@ const styles = StyleSheet.create({
     marginTop: 80,
   },
   paragraph: {
-    fontSize: 16,
-    marginBottom: 50,
+    fontSize: 18,
   },
   cameraContainer: {
     width: "80%",
@@ -88,7 +86,10 @@ const styles = StyleSheet.create({
     top: 0,
     alignSelf: "center",
   },
-  userInfoContainer: {},
+  userInfoContainer: {
+    paddingLeft: 20,
+    paddingTop: 30,
+  },
 });
 
 export default styles;

@@ -51,7 +51,7 @@ export default function Home() {
           style={styles.camera}
         />
       </View>
-      <Text style={styles.paragraph}>
+      <Text style={[styles.paragraph, { marginBottom: 50 }]}>
         Align your camera to the Qr Code to start scanning
       </Text>
       <TouchableOpacity
