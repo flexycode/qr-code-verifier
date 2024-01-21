@@ -13,9 +13,18 @@ export default function verifiedPage() {
           headerTitleAlign: "center",
         }}
       ></Stack.Screen>
-      <View>
-        <Text>Hello testing</Text>
+      <View style={styles.profileAndStatusContainer}>
+        <View style={styles.profilePictureContainer}>
+          <Image
+            style={styles.profilePicture}
+            source={require("@/assets/images/profilePictures/profile1.jpg")}
+          ></Image>
+        </View>
+        <View style={styles.verifiedStatusContainer}>
+          <Text> status</Text>
+        </View>
       </View>
+
       <Text></Text>
     </SafeAreaView>
   );

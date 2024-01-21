@@ -51,6 +51,34 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
   },
+  profileAndStatusContainer: {
+    paddingTop: 50,
+    paddingHorizontal: 10,
+    flexDirection: "row",
+  },
+  profilePictureContainer: {
+    backgroundColor: "aaa",
+    width: "50%",
+    aspectRatio: 1 / 1,
+    borderWidth: 1,
+    borderRadius: 50,
+    overflow: "hidden",
+  },
+  profilePicture: {
+    width: undefined,
+    height: undefined,
+    aspectRatio: 1 / 1,
+    resizeMode: "contain",
+    overflow: "hidden",
+    zIndex: -1,
+  },
+  verifiedStatusContainer: {
+    backgroundColor: "aaa",
+    width: "50%",
+    aspectRatio: 1 / 1,
+    alignContent: "center",
+    justifyContent: "center",
+  },
 });
 
 export default styles;
