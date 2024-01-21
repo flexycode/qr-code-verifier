@@ -1,6 +1,5 @@
 import styles from "@/styles/styles";
-const COLORS = {
-  Primary: "#e5fae3",
-};
+import { COLORS } from "@/constants/colors";
+import { Stack } from "expo-router";
 
 export { styles, COLORS };
