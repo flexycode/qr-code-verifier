@@ -39,7 +39,20 @@ export default function verifiedPage() {
           </View>
         </View>
 
-
+        <View style={styles.userInfoContainer}>
+          <Text>Name</Text>
+          <Text>actual name</Text>
+          <Text>Name</Text>
+          <Text>actual name</Text>
+          <Text>Name</Text>
+          <Text>actual name</Text>
+          <Text>Name</Text>
+          <Text>actual name</Text>
+          <Text>Name</Text>
+          <Text>actual name</Text>
+          <Text>Name</Text>
+          <Text>actual name</Text>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
