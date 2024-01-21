@@ -6,6 +6,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
   },
+  header: {
+    position: "relative",
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 100,
+    marginTop: 80,
+  },
   title: {
     position: "relative",
     fontSize: 24,

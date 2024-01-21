@@ -4,5 +4,8 @@ import { Stack } from "expo-router";
 export default function verifiedPage() {
   <SafeAreaView>
     <Stack.Screen></Stack.Screen>
+    <View>
+      <Text>Hello testing</Text>
+    </View>
   </SafeAreaView>;
 }
