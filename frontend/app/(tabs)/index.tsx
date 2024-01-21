@@ -21,8 +21,7 @@ export default function Home() {
 
   const handleBarCodeScanned = ({ type, data }: BarCodeScannerResult) => {
     setScanned(true);
-    alert("" + type + " " + data);
-    router.navigate(require("@/app/(tabs)/verifiedPage"));
+    router.navigate(data);
   };
 
   if (hasPermission === null) {
@@ -58,7 +57,6 @@ export default function Home() {
         style={styles.button}
         onPress={() => {
           setScanned(false);
-          router.navigate("/(tabs)/verifiedPage");
         }}
       >
         <Text style={styles.buttonText}>Scan QR</Text>
