@@ -25,7 +25,7 @@ export default function verifiedPage() {
           <View style={styles.profilePictureContainer}>
             <Image
               style={styles.profilePicture}
-              source={require("@/assets/images/profilePictures/profile1.jpg")}
+              source={require("@/assets/images/profilePictures/emptyProfile.png")}
             ></Image>
           </View>
           <View style={styles.verifiedStatusContainer}>
